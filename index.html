@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Un regalo especial para el Día del Padre" />
+  <title>Para ti, papá — Feliz Día del Padre</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Fondo estrellado -->
+  <div class="stars" id="stars" aria-hidden="true"></div>
+
+  <!-- Pantalla de bienvenida -->
+  <div class="intro" id="intro">
+    <div class="intro-gift" id="intro-gift" role="button" tabindex="0" aria-label="Abrir regalo">🎁</div>
+    <h1>Tengo algo para ti, papá</h1>
+    <p>Toca el regalo para abrirlo</p>
+  </div>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <main>
+
+    <!-- Hero -->
+    <header class="hero">
+      <span class="hero-badge">21 de junio · Día del Padre</span>
+      <h1>Feliz Día del Padre</h1>
+      <p class="hero-sub">
+        Preparé esto con mucho cariño para recordarte todo lo que significas para mí.
+        No es mucho, pero viene del corazón.
+      </p>
+      <p class="hero-date">Con amor, de Alvaro · 2026</p>
+    </header>
+
+    <!-- Cartas interactivas -->
+    <section class="reveal" aria-labelledby="cards-title">
+      <span class="section-label">Capítulo 1</span>
+      <h2 id="cards-title">Cartas con mensajes para ti</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem;">
+        Cada carta esconde algo que quiero que sepas. Tócala para voltearla.
+      </p>
+      <div class="cards-grid">
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Gracias">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">🙏</span>
+              <span>Carta 1</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Gracias por cada sacrificio silencioso que hiciste por nuestra familia. Nunca pasó desapercibido.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Ejemplo">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">⭐</span>
+              <span>Carta 2</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Eres mi mayor referente. Muchas de mis virtudes las obtuve mirándote a ti.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Recuerdos">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">📸</span>
+              <span>Carta 3</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Por siempre buscar recuerdos familiares.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Protección">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">🛡️</span>
+              <span>Carta 4</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Por siempre buscar la manera para estar a nuestro lado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Amor">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">❤️</span>
+              <span>Carta 5</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Tu amor no siempre se dice con palabras, pero se siente en cada detalle.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-label="Abrir carta: Orgullo">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="icon">🏆</span>
+              <span>Carta 6</span>
+            </div>
+            <div class="flip-card-back">
+              <p>Estoy agradecido de ser tu hijo y poder aprender de ti.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p class="cards-hint">👆 Toca cada carta para descubrir el mensaje</p>
+      <p class="cards-progress" id="cards-progress" aria-live="polite"></p>
+    </section>
+
+    <!-- Carta larga -->
+    <section class="reveal" aria-labelledby="letter-title">
+      <span class="section-label">Capítulo 2</span>
+      <h2 id="letter-title">Una carta para ti</h2>
+      <div class="letter-box">
+        <p class="letter-salutation">Querido papá,</p>
+        <p class="letter-body" id="letter-body" aria-live="polite"></p>
+        <span class="letter-cursor" id="letter-cursor" aria-hidden="true"></span>
+        <p class="letter-signature" id="letter-signature">Con todo cariño,<br />Tu hijo</p>
+      </div>
+    </section>
+
+    <!-- Certificado -->
+    <section class="reveal" aria-labelledby="cert-title">
+      <span class="section-label">Capítulo 3</span>
+      <h2 id="cert-title" class="visually-hidden">Certificado</h2>
+      <div class="certificate">
+        <p class="certificate-sub">Se certifica oficialmente que</p>
+        <p class="certificate-title">🏅 Certificado de Excelencia Paternal 🏅</p>
+        <p class="certificate-name">Papá</p>
+        <p class="certificate-body">
+          Ha sido galardonado con el título de <strong style="color: var(--gold-light);">Mejor Padre del Universo</strong>
+          por su dedicación, amor incondicional, sabiduría, buen humor y por ser simplemente
+          la mejor persona que podría haber tenido como padre.
+        </p>
+        <div class="certificate-seal" aria-hidden="true">🎖️</div>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+          Válido para toda la vida · Sin fecha de vencimiento
+        </p>
+      </div>
+    </section>
+
+    <!-- Final -->
+    <section class="finale reveal">
+      <span class="finale-heart" aria-hidden="true">❤️</span>
+      <h2>Te quiero, papá</h2>
+      <p>
+        Gracias por ser mi padre, mi amigo y mi ejemplo.
+        Hoy y siempre, celebro tenerte en mi vida.
+      </p>
+      <button class="btn-confetti" id="btn-confetti" type="button">
+        🎉 ¡Celebrar contigo!
+      </button>
+    </section>
+
+  </main>
+
+  <footer>
+    Hecho con amor · Feliz Día del Padre 2026
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
